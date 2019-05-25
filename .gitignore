@@ -192,3 +192,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+#ignore data
+data/

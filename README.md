@@ -15,6 +15,7 @@ Greyhound is an open source software from Hobu, Inc. that allows clients to quer
 Entwine is a data organization library for massive point clouds, designed to conquer datasets of trillions of points as well as desktop-scale point clouds.
 
     - entwine demo: https://usgs.entwine.io/
+    - tutorial: https://github.com/connormanning/entwine
 
 
 ## https://github.com/potree/potree
@@ -27,4 +28,26 @@ plas.io is a WebGL HTML5 point cloud renderer that speaks ASPRS LAS and LASzip c
 # Datasets
 
 ## OCM Lidar Data
-     - https://coast.noaa.gov/htdata/lidar1_z/
+     https://coast.noaa.gov/htdata/lidar1_z/
+     https://coast.noaa.gov/htdata/lidar2_z/geoid12b/data/8688/
+
+## Download Instructions
+```sh
+    wget -np -r -nH -L --cut-dirs=2 https://coast.noaa.gov/htdata/lidar2_z/geoid12b/data/8688/ 
+```
+
+## Build Entwine Format
+```sh
+docker run -it -v $(pwd)/data:/data \
+    connormanning/entwine build \
+    -i /data/geoid12b/data/8688/ct/ \
+    -o /data/entwine/ct-output
+```
+
+## Locally Serve Entwine
+
+```sh
+docker run -it -v ~/entwine:/entwine connormanning/entwine build \
+    -i https://entwine.io/data/red-rocks.laz \
+    -o /entwine/red-rocks
+```

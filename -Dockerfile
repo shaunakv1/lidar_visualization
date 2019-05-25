@@ -1,0 +1,5 @@
+FROM connormanning/entwine:latest
+
+VOLUME $pwd/data /entwine
+
+WORKDIR /entwine

@@ -55,7 +55,7 @@ docker run -it -v $(pwd)/data:/data \
 ## Locally Serve Entwine
 
 ```sh
-docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-server
+    docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-server
 ```
 
 ## Launch PDAL Container and Bash into it

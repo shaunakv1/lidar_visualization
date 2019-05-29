@@ -1,0 +1,10 @@
+{
+    "pipeline": [
+        "/ocm_data/geoid12b/data/1/19961009ATM2_143020JR.laz",
+        {
+            "out_srs": "EPSG:26915",
+            "type": "filters.reprojection"
+        },
+        "/ocm_data/entwine_output/19961009ATM2_143020JR_reprojected.laz"
+    ]
+}

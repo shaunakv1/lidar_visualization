@@ -46,26 +46,44 @@ docker run -it -v $(pwd)/data:/data \
 ```
 OCM Dataset
 ```sh
+rm all_files.csv
+
 docker run -it -v $(pwd)/data:/data \
+    -v /Volumes/shaunak_2tb/OCM_Lidar_data:/ocm_data \
     connormanning/entwine build \
-    -i /data/geoid12b/data/8688/ct/ \
-    -o /data/entwine/ct-output
+    -i /ocm_data/geoid12b/data/4937/ \
+    -o /ocm_data/entwine_output/4937 \
+    -r EPSG:4269 EPSG:3857 \
+    --hammer \
+    --scale 0.01 \
+    -f
 ```
+
+docker run -it -v $(pwd)/data:/data \
+    -v /Volumes/shaunak_2tb/OCM_Lidar_data:/ocm_data \
+    connormanning/entwine scan \
+    -i '/ocm_data/geoid12b/data/1/*.laz' \
+    -r EPSG:3857
+
 
 ## Locally Serve Entwine
 
 ```sh
-    docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-server
+    docker run -it -v /Volumes/shaunak_2tb/OCM_Lidar_data/entwine_output:/var/www -p 8080:8080 connormanning/http-server
 ```
 
 ## Launch PDAL Container and Bash into it
 
 ```sh
-    docker run -it -v $(pwd)/data:/data pdal/pdal bash
+    docker run -it -v $(pwd)/data:/data -v /Volumes/shaunak_2tb/OCM_Lidar_data:/ocm_data pdal/pdal bash
 ```
 
 ## Alternatively Launch miniconda environment in docker
 
 ```sh
-    docker run -it -v $(pwd)/data:/data continuumio/miniconda3 bash
+    docker run -it -v $(pwd)/data:/data -v /Volumes/shaunak_2tb/OCM_Lidar_data:/ocm_data continuumio/miniconda3 bash
 ```
+
+
+## AWS Lambda image for PDAL
+    - https://github.com/PDAL/lambda

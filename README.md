@@ -58,9 +58,8 @@ docker run -it -v $(pwd)/data:/data \
 docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-server
 ```
 
-## Launch Pdal Docker Container
+## Launch PDAL Container and Bash into it
 
 ```sh
-    docker run -it -v $(pwd)/data:/data \
-    pdal/pdal bash
+    docker run -it -v $(pwd)/data:/data pdal/pdal bash
 ```

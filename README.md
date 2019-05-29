@@ -37,6 +37,14 @@ plas.io is a WebGL HTML5 point cloud renderer that speaks ASPRS LAS and LASzip c
 ```
 
 ## Build Entwine Format
+Demo Dataset
+```sh
+docker run -it -v $(pwd)/data:/data \
+    connormanning/entwine build \
+    -i https://entwine.io/data/red-rocks.laz \
+    -o /data/entwine/red-rocks
+```
+OCM Dataset
 ```sh
 docker run -it -v $(pwd)/data:/data \
     connormanning/entwine build \
@@ -47,7 +55,12 @@ docker run -it -v $(pwd)/data:/data \
 ## Locally Serve Entwine
 
 ```sh
-docker run -it -v ~/entwine:/entwine connormanning/entwine build \
-    -i https://entwine.io/data/red-rocks.laz \
-    -o /entwine/red-rocks
+docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-server
+```
+
+## Launch Pdal Docker Container
+
+```sh
+    docker run -it -v $(pwd)/data:/data \
+    pdal/pdal bash
 ```

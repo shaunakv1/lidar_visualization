@@ -63,3 +63,9 @@ docker run -it -v $(pwd)/data/entwine:/var/www -p 8080:8080 connormanning/http-s
 ```sh
     docker run -it -v $(pwd)/data:/data pdal/pdal bash
 ```
+
+## Alternatively Launch miniconda environment in docker
+
+```sh
+    docker run -it -v $(pwd)/data:/data continuumio/miniconda3 bash
+```

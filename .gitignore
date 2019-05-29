@@ -194,4 +194,5 @@ typings/
 .dynamodb/
 
 #ignore data
-data/
+data/entwine
+data/geoid12b
